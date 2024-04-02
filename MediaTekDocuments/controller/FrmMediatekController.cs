@@ -96,5 +96,13 @@ namespace MediaTekDocuments.controller
         {
             return access.CreerExemplaire(exemplaire);
         }
+        /// <summary>
+        /// getter sur les utilisateurs
+        /// </summary>
+        /// <returns>Liste d'objets Utilisateur</returns>
+        public List<Utilisateur> GetAllUtilisateurs()
+        {
+            return access.GetAllUtilisateurs();
+        }
     }
 }

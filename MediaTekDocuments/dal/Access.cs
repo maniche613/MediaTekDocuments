@@ -141,6 +141,15 @@ namespace MediaTekDocuments.dal
             List<Exemplaire> lesExemplaires = TraitementRecup<Exemplaire>(GET, "exemplaire/" + jsonIdDocument);
             return lesExemplaires;
         }
+        /// <summary>
+        /// Retourne tous les utilisateurs à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Utilisateur</returns>
+        public List<Utilisateur> GetAllUtilisateurs()
+        {
+            List<Utilisateur> lesUtilisateurs = TraitementRecup<Utilisateur>(GET, "utilisateur");
+            return lesUtilisateurs;
+        }
 
         /// <summary>
         /// ecriture d'un exemplaire en base de données
@@ -241,5 +250,22 @@ namespace MediaTekDocuments.dal
             }
         }
 
+        /// <summary>
+        /// Récupère l'utilisateur selon son login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>True si l'utilisateur est trouvé</returns>
+        public Utilisateur GetUtilisateur(string login)
+        {
+            List<Utilisateur> liste = TraitementRecup<Utilisateur>(GET, "utilisateur/" + login);
+            if (liste == null || liste.Count == 0)
+            {
+                return null;
+            }
+            return (liste[0]);
+        }
+
     }
+
+    
 }

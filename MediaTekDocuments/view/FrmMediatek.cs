@@ -21,13 +21,34 @@ namespace MediaTekDocuments.view
         private readonly BindingSource bdgPublics = new BindingSource();
         private readonly BindingSource bdgRayons = new BindingSource();
 
+        private readonly Utilisateur utilisateur;
+
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
         /// </summary>
-        internal FrmMediatek()
+        internal FrmMediatek(Utilisateur utilisateur)
         {
             InitializeComponent();
             this.controller = new FrmMediatekController();
+            this.utilisateur = utilisateur;
+            AutorisationsAcces(utilisateur);
+        }
+
+        public void AutorisationsAcces(Utilisateur utilisateur)
+        {
+            if (utilisateur.Type == "Administratif" || utilisateur.Type == "Administrateur")
+            {
+                FrmFinAbonnement FrmFinAbonnement = new FrmFinAbonnement();
+                FrmFinAbonnement.ShowDialog();
+            }
+            else if (utilisateur.Type == "Prêts")
+            {
+                // empêcher les modifications
+                grpLivresInfos.Enabled = false;
+                grpDvdInfos.Enabled = false;
+                grpRevuesInfos.Enabled = false;
+                grpReceptionExemplaire.Visible = false;
+            }
         }
 
         /// <summary>
@@ -989,7 +1010,7 @@ namespace MediaTekDocuments.view
         }
         #endregion
 
-        #region Onglet Paarutions
+        #region Onglet Parutions
         private readonly BindingSource bdgExemplairesListe = new BindingSource();
         private List<Exemplaire> lesExemplaires = new List<Exemplaire>();
         const string ETATNEUF = "00001";
@@ -1239,5 +1260,11 @@ namespace MediaTekDocuments.view
             }
         }
         #endregion
-    }
+
+
+		private void grpLivresRecherche_Enter(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

@@ -1,4 +1,5 @@
 ﻿
+
 namespace MediaTekDocuments.view
 {
     partial class FrmMediatek
@@ -11,7 +12,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Nettoyage des ressources utilisées.
         /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -1972,4 +1973,3 @@ namespace MediaTekDocuments.view
         private System.Windows.Forms.Label label59;
     }
 }
-
