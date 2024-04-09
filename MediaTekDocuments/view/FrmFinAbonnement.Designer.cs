@@ -29,26 +29,58 @@ namespace MediaTekDocuments.view
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.dgvAbonnementsAEcheance = new System.Windows.Forms.DataGridView();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnClose = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.dgvAbonnementsAEcheance)).BeginInit();
 			this.SuspendLayout();
+			// 
+			// dgvAbonnementsAEcheance
+			// 
+			this.dgvAbonnementsAEcheance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvAbonnementsAEcheance.Location = new System.Drawing.Point(9, 30);
+			this.dgvAbonnementsAEcheance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dgvAbonnementsAEcheance.Name = "dgvAbonnementsAEcheance";
+			this.dgvAbonnementsAEcheance.RowHeadersWidth = 51;
+			this.dgvAbonnementsAEcheance.RowTemplate.Height = 24;
+			this.dgvAbonnementsAEcheance.Size = new System.Drawing.Size(341, 151);
+			this.dgvAbonnementsAEcheance.TabIndex = 0;
+			this.dgvAbonnementsAEcheance.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAbonnementsAEcheance_ColumnHeaderMouseClick);
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(76, 92);
+			this.label1.Location = new System.Drawing.Point(10, 11);
+			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(197, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Votre abonnement va bientot prendre fin";
+			this.label1.Size = new System.Drawing.Size(336, 13);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Liste des revues dont l\'abonnement se termine dans moins de 30 jours";
 			// 
-			// FrmFinAbonnement
+			// btnClose
+			// 
+			this.btnClose.Location = new System.Drawing.Point(9, 186);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(345, 19);
+			this.btnClose.TabIndex = 2;
+			this.btnClose.Text = "Fermer";
+			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+			// 
+			// FrmRevues30j
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(356, 225);
+			this.ClientSize = new System.Drawing.Size(363, 213);
+			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.label1);
-			this.Name = "FrmFinAbonnement";
-			this.Text = "FrmFinAbonnement";
+			this.Controls.Add(this.dgvAbonnementsAEcheance);
+			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Name = "FrmRevues30j";
+			this.Text = "FrmRevues30j";
+			this.Load += new System.EventHandler(this.FrmRevues30j_Load);
+			((System.ComponentModel.ISupportInitialize)(this.dgvAbonnementsAEcheance)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -56,6 +88,8 @@ namespace MediaTekDocuments.view
 
 		#endregion
 
+		private System.Windows.Forms.DataGridView dgvAbonnementsAEcheance;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button btnClose;
 	}
 }
