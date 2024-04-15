@@ -42,6 +42,12 @@ namespace MediaTekDocuments.dal
         private const string POST = "POST";
         /// <summary>
         /// méthode HTTP pour update
+        ///  </summary>
+        private const string PUT = "PUT";
+        /// <summary>
+        /// méthode HTTP pour delete
+        ///  </summary>
+        private const string DELETE = "DELETE";
 
         /// <summary>
         /// Récupération de la chaîne de connexion
@@ -341,73 +347,6 @@ namespace MediaTekDocuments.dal
         }
 
 
-        /// <summary>
-        /// Retourne les commandes d'un livre
-        /// </summary>
-        /// <param name="idDocument">id du livre concerné</param>
-        /// <returns>Liste d'objets Commandes</returns>
-        public List<CommandeDocument> GetCommandes(string idDocument)
-        {
-            List<CommandeDocument> lesCommandes = TraitementRecup<CommandeDocument>(GET, "commandedocument/" + idDocument);
-            return lesCommandes;
-        }
-
-
-        /// <summary>
-        /// ecriture d'une commandedocument en base de données
-        /// </summary>
-        /// <param name="commandedocument">exemplaire à insérer</param>
-        /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
-        public bool CreerCommandeDocument(CommandeDocument commandedocument)
-        {
-            String jsonCommandeDocument = JsonConvert.SerializeObject(commandedocument, new CustomDateTimeConverter());
-            Console.WriteLine("****************" + jsonCommandeDocument);
-            try
-            {
-                // récupération soit d'une liste vide (requête ok) soit de null (erreur)
-                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(POST, "commandedocument/" + jsonCommandeDocument);
-                return (liste != null);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return false;
-        }
-
-        public bool SetCommandeDocument(CommandeDocument commandedocument)
-        {
-            String jsonCommandeDocument = JsonConvert.SerializeObject(commandedocument, new CustomDateTimeConverter());
-            Console.WriteLine("****************" + jsonCommandeDocument);
-            try
-            {
-                // récupération soit d'une liste vide (requête ok) soit de null (erreur)
-                List<Commande> liste = TraitementRecup<Commande>(PUT, "commandedocument/" + commandedocument.Id + "/" + jsonCommandeDocument);
-                return (liste != null);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return false;
-        }
-
-        public bool SuppComandeDocument(CommandeDocument commandedocument)
-        {
-            String jsonCommandeDocument = JsonConvert.SerializeObject(commandedocument, new CustomDateTimeConverter());
-            Console.WriteLine("****************" + jsonCommandeDocument);
-            try
-            {
-                // récupération soit d'une liste vide (requête ok) soit de null (erreur)
-                List<Commande> liste = TraitementRecup<Commande>(DELETE, "commandedocument/" + jsonCommandeDocument);
-                return (liste != null);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return false;
-        }
 
 
         /// <summary>
