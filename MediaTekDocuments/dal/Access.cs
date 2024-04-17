@@ -72,7 +72,8 @@ namespace MediaTekDocuments.dal
             String authenticationString;
             try
             {
-                authenticationString = GetConnectionStringByName(connectionName);
+                //  authenticationString = GetConnectionStringByName(connectionName);
+                authenticationString = "admin:adminpwd";
                 Log.Logger = new LoggerConfiguration()
                     .MinimumLevel.Verbose()
                     .WriteTo.Console()

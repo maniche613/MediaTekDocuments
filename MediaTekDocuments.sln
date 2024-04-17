@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaTekDocuments", "MediaTekDocuments\MediaTekDocuments.csproj", "{75DE903D-6147-4E14-BBE0-FA20CD1F9840}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatekDocumentTests", "MediatekDocumentTests\MediatekDocumentTests.csproj", "{AD9820A3-1C18-4B5F-8599-9AD98FC952FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowMediatekDocuments", "SpecFlowMediatekDocuments\SpecFlowMediatekDocuments.csproj", "{5147FDAD-9E13-4A6E-A0A1-319187B92C05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{75DE903D-6147-4E14-BBE0-FA20CD1F9840}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75DE903D-6147-4E14-BBE0-FA20CD1F9840}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75DE903D-6147-4E14-BBE0-FA20CD1F9840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9820A3-1C18-4B5F-8599-9AD98FC952FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9820A3-1C18-4B5F-8599-9AD98FC952FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9820A3-1C18-4B5F-8599-9AD98FC952FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9820A3-1C18-4B5F-8599-9AD98FC952FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5147FDAD-9E13-4A6E-A0A1-319187B92C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5147FDAD-9E13-4A6E-A0A1-319187B92C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5147FDAD-9E13-4A6E-A0A1-319187B92C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5147FDAD-9E13-4A6E-A0A1-319187B92C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
