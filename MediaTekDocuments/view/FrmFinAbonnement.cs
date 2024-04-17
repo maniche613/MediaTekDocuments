@@ -48,6 +48,10 @@ namespace MediaTekDocuments.view
             dgvAbonnementsAEcheance.Columns[1].HeaderCell.Value = "Titre";
         }
 
+        /// <summary>
+        /// Liste des abonnements arrivés à échéance
+        /// </summary>
+        /// <returns></returns>
         private List<Abonnement> AbonnementsAEcheance()
         {
             List<Abonnement> lesAbonnements = controller.GetAbonnements();

@@ -105,11 +105,20 @@ namespace MediaTekDocuments.controller
             return access.CreerAbonnement(abonnement);
         }
 
+        /// <summary>
+        /// Supprimer un abonnement d'une revue dans la bdd
+        /// </summary>
+        /// <param name="abonnement">L'objet Abonnement concerné</param>
+        /// <returns>True si la suppression a pu se faire</returns>
         public bool SuppAbonnement(Abonnement abonnement)
         {
             return access.SuppAbonnement(abonnement);
         }
 
+        /// <summary>
+        /// getter sur les abonnements
+        /// </summary>
+        /// <returns>Liste d'objets Abonnement</returns>
         public List<Abonnement> GetAbonnements()
         {
             return access.GetAbonnements();
@@ -146,25 +155,42 @@ namespace MediaTekDocuments.controller
         }
 
         /// <summary>
-        /// Crée un exemplaire d'une revue dans la bdd
+        /// Crée une commande d'un document dans la bdd
         /// </summary>
-        /// <param name="exemplaire">L'objet Exemplaire concerné</param>
+        /// <param name="commandedocument">L'objet CommandeDocument concerné</param>
         /// <returns>True si la création a pu se faire</returns>
         public bool CreerCommandeDocument(CommandeDocument commandedocument)
         {
             return access.CreerCommandeDocument(commandedocument);
         }
 
+        /// <summary>
+        /// Modifie une commande d'un document dans la bdd
+        /// </summary>
+        /// <param name="commandedocument">L'objet CommandeDocument concerné</param>
+        /// <returns>True si la création a pu se faire</returns>
         public bool SetCommandeDocument(CommandeDocument commandedocument)
         {
             return access.SetCommandeDocument(commandedocument);
         }
 
+        /// <summary>
+        /// Supprime une commande d'un document dans la bdd
+        /// </summary>
+        /// <param name="commandedocument">L'objet CommandeDocument concerné</param>
+        /// <returns>True si la création a pu se faire</returns>
         public bool SuppComandeDocument(CommandeDocument commandedocument)
         {
             return access.SuppComandeDocument(commandedocument);
         }
 
+        /// <summary>
+        /// Vérifie si les date de parution est entre la date de commande et la date de fin d'abonnement
+        /// </summary>
+        /// <param name="dateCommande">la date de commande concerné</param>
+        /// <param name="dateFinAbonnement">la date de fin d'abonnement concernée</param>
+        /// <param name="dateParution">la date de parution concerné</param>
+        /// <returns></returns>
         public bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFinAbonnement, DateTime dateParution)
         {
             return (DateTime.Compare(dateCommande, dateParution) < 0 && DateTime.Compare(dateParution, dateFinAbonnement) < 0);

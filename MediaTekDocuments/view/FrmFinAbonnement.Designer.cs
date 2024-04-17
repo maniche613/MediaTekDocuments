@@ -39,7 +39,7 @@ namespace MediaTekDocuments.view
 			// 
 			this.dgvAbonnementsAEcheance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvAbonnementsAEcheance.Location = new System.Drawing.Point(9, 30);
-			this.dgvAbonnementsAEcheance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dgvAbonnementsAEcheance.Margin = new System.Windows.Forms.Padding(2);
 			this.dgvAbonnementsAEcheance.Name = "dgvAbonnementsAEcheance";
 			this.dgvAbonnementsAEcheance.RowHeadersWidth = 51;
 			this.dgvAbonnementsAEcheance.RowTemplate.Height = 24;
@@ -60,7 +60,7 @@ namespace MediaTekDocuments.view
 			// btnClose
 			// 
 			this.btnClose.Location = new System.Drawing.Point(9, 186);
-			this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(2);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(345, 19);
 			this.btnClose.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace MediaTekDocuments.view
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
-			// FrmRevues30j
+			// FrmFinAbonnement
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -76,9 +76,9 @@ namespace MediaTekDocuments.view
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.dgvAbonnementsAEcheance);
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.Name = "FrmRevues30j";
-			this.Text = "FrmRevues30j";
+			this.Margin = new System.Windows.Forms.Padding(2);
+			this.Name = "FrmFinAbonnement";
+			this.Text = "FrmFinAbonnement";
 			this.Load += new System.EventHandler(this.FrmRevues30j_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgvAbonnementsAEcheance)).EndInit();
 			this.ResumeLayout(false);
