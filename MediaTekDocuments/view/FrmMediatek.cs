@@ -1356,6 +1356,7 @@ namespace MediaTekDocuments.view
 				Livre livre = lesLivres.Find(x => x.Id.Equals(txbLivreCommandeNumero.Text));
 				if (livre != null)
 				{
+					
 					AfficheReceptionLivresInfos(livre);
 					AccesReceptionLivreGroupBox(true);
 				}

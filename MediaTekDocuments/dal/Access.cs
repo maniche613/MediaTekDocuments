@@ -19,7 +19,9 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// adresse de l'API
         /// </summary>
-        private static readonly string uriApi = "http://localhost/rest_mediatekdocuments/";
+#pragma warning disable S1075 // URIs should not be hardcoded
+        private static readonly string uriApi = "http://localhost/rest_mediatekdocuments3.0/";
+#pragma warning restore S1075 // URIs should not be hardcoded
         /// <summary>
         /// nom de connexion à la bdd
         /// </summary>
@@ -48,11 +50,13 @@ namespace MediaTekDocuments.dal
         /// méthode HTTP pour delete
         ///  </summary>
         private const string DELETE = "DELETE";
+        /// Méthode privée pour créer un singleton
+        /// initialise l'accès à l'API
 
         /// <summary>
         /// Récupération de la chaîne de connexion
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">nom de la chaîne de connexion</param>
         /// <returns></returns>
         static string GetConnectionStringByName(string name)
         {
@@ -64,8 +68,7 @@ namespace MediaTekDocuments.dal
         }
 
         /// <summary>
-        /// Méthode privée pour créer un singleton
-        /// initialise l'accès à l'API
+        /// Récupération de l'instance pour accéder à l'API
         /// </summary>
         private Access()
         {
@@ -73,7 +76,8 @@ namespace MediaTekDocuments.dal
             try
             {
                 authenticationString = GetConnectionStringByName(connectionName);
-                //authenticationString = "admin:adminpwd";
+                // authenticationString = "admin:adminpwd";
+
                 Log.Logger = new LoggerConfiguration()
                     .MinimumLevel.Verbose()
                     .WriteTo.Console()
@@ -96,7 +100,7 @@ namespace MediaTekDocuments.dal
         /// <returns>instance unique de la classe</returns>
         public static Access GetInstance()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new Access();
             }
@@ -154,6 +158,16 @@ namespace MediaTekDocuments.dal
         }
 
         /// <summary>
+        /// Retourne tous les utilisateurs à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Utilisateur</returns>
+        public List<Utilisateur> GetAllUtilisateurs()
+        {
+            List<Utilisateur> lesUtilisateurs = TraitementRecup<Utilisateur>(GET, "utilisateur");
+            return lesUtilisateurs;
+        }
+
+        /// <summary>
         /// Retourne toutes les revues à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets Revue</returns>
@@ -162,6 +176,7 @@ namespace MediaTekDocuments.dal
             List<Revue> lesRevues = TraitementRecup<Revue>(GET, "revue");
             return lesRevues;
         }
+
         /// <summary>
         /// Retourne les abonnements d'une revue
         /// </summary>
@@ -180,7 +195,6 @@ namespace MediaTekDocuments.dal
         public bool CreerAbonnement(Abonnement abonnement)
         {
             String jsonAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
-            
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -217,7 +231,7 @@ namespace MediaTekDocuments.dal
         }
 
         /// <summary>
-        /// Retourne tous abonnements 
+        /// Retourne tous les abonnements
         /// </summary>
         /// <returns>Liste d'objets Abonnement</returns>
         public List<Abonnement> GetAbonnements()
@@ -226,8 +240,6 @@ namespace MediaTekDocuments.dal
             return lesAbonnements;
         }
 
-
-
         /// <summary>
         /// Retourne les exemplaires d'une revue
         /// </summary>
@@ -235,18 +247,8 @@ namespace MediaTekDocuments.dal
         /// <returns>Liste d'objets Exemplaire</returns>
         public List<Exemplaire> GetExemplairesRevue(string idDocument)
         {
-            String jsonIdDocument = convertToJson("id", idDocument);
-            List<Exemplaire> lesExemplaires = TraitementRecup<Exemplaire>(GET, "exemplaire/" + jsonIdDocument);
+            List<Exemplaire> lesExemplaires = TraitementRecup<Exemplaire>(GET, "exemplaire/" + idDocument);
             return lesExemplaires;
-        }
-        /// <summary>
-        /// Retourne tous les utilisateurs à partir de la BDD
-        /// </summary>
-        /// <returns>Liste d'objets Utilisateur</returns>
-        public List<Utilisateur> GetAllUtilisateurs()
-        {
-            List<Utilisateur> lesUtilisateurs = TraitementRecup<Utilisateur>(GET, "utilisateur");
-            return lesUtilisateurs;
         }
 
         /// <summary>
@@ -257,7 +259,8 @@ namespace MediaTekDocuments.dal
         public bool CreerExemplaire(Exemplaire exemplaire)
         {
             String jsonExemplaire = JsonConvert.SerializeObject(exemplaire, new CustomDateTimeConverter());
-            try {
+            try
+            {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
                 List<Exemplaire> liste = TraitementRecup<Exemplaire>(POST, "exemplaire/" + jsonExemplaire);
                 return (liste != null);
@@ -266,9 +269,8 @@ namespace MediaTekDocuments.dal
             {
                 Log.Error("Access.CreerExemplaire catch jsonExemplaire={0} erreur={1}", jsonExemplaire, ex.Message);
             }
-            return false; 
+            return false;
         }
-
 
         /// <summary>
         /// Retourne les commandes d'un livre
@@ -284,12 +286,11 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// ecriture d'une commandedocument en base de données
         /// </summary>
-        /// <param name="commandedocument">exemplaire à insérer</param>
+        /// <param name="commandedocument">commandedocument à insérer</param>
         /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
         public bool CreerCommandeDocument(CommandeDocument commandedocument)
         {
             String jsonCommandeDocument = JsonConvert.SerializeObject(commandedocument, new CustomDateTimeConverter());
-            Console.WriteLine("****************" + jsonCommandeDocument);
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -311,7 +312,6 @@ namespace MediaTekDocuments.dal
         public bool SetCommandeDocument(CommandeDocument commandedocument)
         {
             String jsonCommandeDocument = JsonConvert.SerializeObject(commandedocument, new CustomDateTimeConverter());
-            Console.WriteLine("****************" + jsonCommandeDocument);
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -333,7 +333,6 @@ namespace MediaTekDocuments.dal
         public bool SuppComandeDocument(CommandeDocument commandedocument)
         {
             String jsonCommandeDocument = JsonConvert.SerializeObject(commandedocument, new CustomDateTimeConverter());
-            Console.WriteLine("****************" + jsonCommandeDocument);
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -347,9 +346,6 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
-
-
-
         /// <summary>
         /// Traitement de la récupération du retour de l'api, avec conversion du json en liste pour les select (GET)
         /// </summary>
@@ -357,7 +353,7 @@ namespace MediaTekDocuments.dal
         /// <param name="methode">verbe HTTP (GET, POST, PUT, DELETE)</param>
         /// <param name="message">information envoyée</param>
         /// <returns>liste d'objets récupérés (ou liste vide)</returns>
-        private List<T> TraitementRecup<T> (String methode, String message)
+        private List<T> TraitementRecup<T>(String methode, String message)
         {
             List<T> liste = new List<T>();
             try
@@ -379,25 +375,13 @@ namespace MediaTekDocuments.dal
                 {
                     Log.Error("Access.TraitementRecup catch code={0} erreur={1}", code, (String)retour["message"]);
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Log.Error("Access.TraitementRecup catch liste={0} erreur={1}", liste, e.Message);
                 Environment.Exit(0);
             }
             return liste;
-        }
-
-        /// <summary>
-        /// Convertit en json un couple nom/valeur
-        /// </summary>
-        /// <param name="nom"></param>
-        /// <param name="valeur"></param>
-        /// <returns>couple au format json</returns>
-        private String convertToJson(Object nom, Object valeur)
-        {
-            Dictionary<Object, Object> dictionary = new Dictionary<Object, Object>();
-            dictionary.Add(nom, valeur);
-            return JsonConvert.SerializeObject(dictionary);
         }
 
         /// <summary>
@@ -429,22 +413,5 @@ namespace MediaTekDocuments.dal
             }
         }
 
-        /// <summary>
-        /// Récupère l'utilisateur selon son login
-        /// </summary>
-        /// <param name="login"></param>
-        /// <returns>True si l'utilisateur est trouvé</returns>
-        public Utilisateur GetUtilisateur(string login)
-        {
-            List<Utilisateur> liste = TraitementRecup<Utilisateur>(GET, "utilisateur/" + login);
-            if (liste == null || liste.Count == 0)
-            {
-                return null;
-            }
-            return (liste[0]);
-        }
-
     }
-
-    
 }

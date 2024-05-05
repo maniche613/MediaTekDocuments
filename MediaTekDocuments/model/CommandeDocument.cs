@@ -28,17 +28,17 @@ namespace MediaTekDocuments.model
         /// </summary>
         public string Suivi { get; set; }
 
-        /// <summary>
-        /// Initialisation d'un nouvel objet CommandeDocument
-        /// </summary>
-        /// <param name="id">Id de la commande de document</param>
-        /// <param name="dateCommande">Date de la commande de document</param>
-        /// <param name="montant">Montant de la commande de document</param>
-        /// <param name="nbExemplaire">Nombre d'exemplaire de la commande de document</param>
-        /// <param name="idLivreDvd">Id du LivreDvd correspondant à la commande de document</param>
-        /// <param name="idSuivi">Id de l'étape de suivi correspondant à la commande de document</param>
-        /// <param name="libelle">Id du libelle de l'étape de suivi correspondant à la commande de document</param>
-        public CommandeDocument(string id, DateTime dateCommande, string montant, int nbExemplaire,
+		/// <summary>
+		/// Initialisation d'un nouvel objet CommandeDocument
+		/// </summary>
+		/// <param name="id">Id de la commande de document</param>
+		/// <param name="dateCommande">Date de la commande de document</param>
+		/// <param name="montant">Montant de la commande de document</param>
+		/// <param name="nbExemplaire">Nombre d'exemplaire de la commande de document</param>
+		/// <param name="idLivreDvd">Id du LivreDvd correspondant à la commande de document</param>
+		/// <param name="idSuivi">Id de l'étape de suivi correspondant à la commande de document</param>
+		/// <param name="suivi">libelle de l'etape de suivi de la commande de document</param>
+		public CommandeDocument(string id, DateTime dateCommande, string montant, int nbExemplaire,
             string idLivreDvd, string idSuivi, string suivi)
             : base(id, dateCommande, montant)
         {
